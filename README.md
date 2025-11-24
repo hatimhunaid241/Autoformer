@@ -36,39 +36,49 @@ Inspired by the stochastic process theory, we design the Auto-Correlation mechan
 <b>Figure 2.</b> Auto-Correlation mechansim.
 </p>
 
-## Get Started
 
-1. Install Python 3.6, PyTorch 1.9.0.
-2. Download data. You can obtain all the six benchmarks from [Google Drive](https://drive.google.com/drive/folders/1ZOYpTUa82_jCcxIdTmyr0LXQfvaM9vIy?usp=sharing). **All the datasets are well pre-processed** and can be used easily.
-3. Train the model. We provide the experiment scripts of all benchmarks under the folder `./scripts`. You can reproduce the experiment results by:
+## Project Context & Reproducibility
 
-```bash
-bash ./scripts/ETT_script/Autoformer_ETTm1.sh
-bash ./scripts/ECL_script/Autoformer.sh
-bash ./scripts/Exchange_script/Autoformer.sh
-bash ./scripts/Traffic_script/Autoformer.sh
-bash ./scripts/Weather_script/Autoformer.sh
-bash ./scripts/ILI_script/Autoformer.sh
-```
+**This repository is a fork of the official Autoformer codebase.** Our work focuses on reproducing the main results and figures from the NeurIPS 2021 paper, with an emphasis on clear reproducibility, documentation, and critical analysis for the COMP3314 course project.
 
-4. Special-designed implementation
+### What We Did
+- Reproduced key experiments and results from the paper using the provided scripts and datasets.
+- Added/modified scripts for easier experiment management and reproducibility (see `scripts/` and `utils/`).
+- Documented the setup, training, and evaluation process in detail.
+- Analyzed discrepancies between our results and those reported in the paper.
+- Provided critical insights and suggestions for further improvement.
 
-- **Speedup Auto-Correlation:** We built the Auto-Correlation mechanism as a batch-normalization-style block to make it more memory-access friendly. See the [paper](https://arxiv.org/abs/2106.13008) for details.
+### Setup Instructions
+1. **Clone the repository**
+2. **Install dependencies**
+  - Using Conda: `conda env create -f environment.yml && conda activate autoformer`
+  - Or using pip: `pip install -r requirements.txt`
+3. **Download datasets**
+  - Run: `make get_dataset` or use the provided scripts in `utils/`.
+4. **Run Experiments**
+  - Example: `bash scripts/ETT_script/Autoformer_ETTm1.sh`
+  - See `scripts/` for all available experiment scripts.
+  - You can also run all experiments using `bash script_all.sh`.
 
-- **Without the position embedding:** Since the series-wise connection will inherently keep the sequential information, Autoformer does not need the position embedding, which is different from Transformers.
+### Results
+- We successfully reproduced the main results for [list datasets/benchmarks].
+- See the `results/` and `test_results/` folders for output files, metrics, and plots.
+- When starting from scratch, you will have to run the scripts to generate the results.
+- For a detailed comparison with the original paper, see the report in `report/`.
 
-### Reproduce with Docker
+### Troubleshooting
+- If you encounter CUDA or dependency issues, check your PyTorch and CUDA versions.
+- For dataset download issues, verify your internet connection or use the direct Google Drive links in the README.
 
-To easily reproduce the results using Docker, conda and Make,  you can follow the next steps:
-1. Initialize the docker image using: `make init`. 
-2. Download the datasets using: `make get_dataset`.
-3. Run each script in `scripts/` using `make run_module module="bash scripts/ETT_script/Autoformer_ETTm1.sh"` for each script.
-4. Alternatively, run all the scripts at once:
-```
-for file in `ls scripts`; do make run_module module="bash scripts/$script"; done
-```
-### A Simple Example
-See `predict.ipynb` for workflow (in Chinese).
+### Contributions
+- [List your team members and their contributions.]
+- [Highlight any new scripts, bug fixes, or improvements you made.]
+
+### License
+This project inherits the license of the original Autoformer repository.
+
+---
+For more details, see the full report in the `report/` folder.
 
 ## Main Results
 

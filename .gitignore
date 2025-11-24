@@ -1,3 +1,6 @@
+.dataset
+dataset/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -127,3 +130,21 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+new_results/
+new_test_results/
+checkpoints/
+test_results/
+test_results_2/
+results/
+results_2/
+dataset/
+
+.new_results
+.new_test_results
+.checkpoints
+.test_results
+.test_results_2
+.results
+.results_2
+.dataset
